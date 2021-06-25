@@ -27,6 +27,7 @@ namespace MyLoadingProgressBar
         }
         private bool guncelle = false;
 
+  
         public bool Guncelleme
         {
             get => guncelle;
@@ -37,15 +38,6 @@ namespace MyLoadingProgressBar
                 timer1.Enabled = guncelle;
             }
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="e"></param>
-        //protected override void OnResize(EventArgs e)
-        //{
-            
-        //    this.Invalidate();
-        //}
 
         /// <summary>
         /// Ekrana çizdimek istediğimiz nesneleri, Control sınıfındaki OnPaint metodunu override ederek bu metot içerisinde belirli metotları çağırarak çizdiririz.
@@ -67,10 +59,13 @@ namespace MyLoadingProgressBar
             // Oluşturmak istediğimiz kontrolün etrafına üç boyutlu bir kenarlık çizdirir.
             
             int PenWidth = (int)Pens.White.Width;
-
+            //üst yatay kenar
             pe.Graphics.DrawLine(Pens.DarkGray,new Point(this.ClientRectangle.Left, this.ClientRectangle.Top),new Point(this.ClientRectangle.Width - PenWidth, this.ClientRectangle.Top));
+            //sol dikey kenar
             pe.Graphics.DrawLine(Pens.DarkGray, new Point(this.ClientRectangle.Left, this.ClientRectangle.Top),new Point(this.ClientRectangle.Left, this.ClientRectangle.Height - PenWidth));
+            //alt yatay kenar
             pe.Graphics.DrawLine(Pens.White,new Point(this.ClientRectangle.Left, this.ClientRectangle.Height - PenWidth),new Point(this.ClientRectangle.Width - PenWidth, this.ClientRectangle.Height - PenWidth));
+            //sağ dikey kenar
             pe.Graphics.DrawLine(Pens.White, new Point(this.ClientRectangle.Width - PenWidth, this.ClientRectangle.Top),new Point(this.ClientRectangle.Width - PenWidth, this.ClientRectangle.Height - PenWidth));
 
             //ProgressBar içine text yazdırır.
@@ -202,7 +197,7 @@ namespace MyLoadingProgressBar
                 this.Invalidate(updateRect);
             }
         }
-
+       
         public Color ProgressBarColor
         {
             get
@@ -218,12 +213,23 @@ namespace MyLoadingProgressBar
                 this.Invalidate();
             }
         }
-
+        /// <summary>
+        /// timer ile progressbarın Value değerini arttırarark ilerlemesini sağlarız.
+        /// FormArgb yardımıyla ProgressBarın Value değerine bağlı olarak ProgressBarın textinin rengini anlık değiştirmiş olruz.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timer1_Tick(object sender, EventArgs e)
         {
 
             ForeColor = Color.FromArgb(Value, 100, Value);
              Value++;
+            if (Value==250)
+            {
+                timer1.Stop();
+                Value = 0;
+                
+            }
             
         }
 

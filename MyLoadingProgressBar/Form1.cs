@@ -31,29 +31,6 @@ namespace MyLoadingProgressBar
         {
             loadingProgressBar1.Value = 0;
         }
-
-
-
-
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-        //    loadingProgressBar1.Value = 1;
-        //    this.timer1.Interval = 1;
-        //    this.timer1.Enabled = true;
-        //}
-
-        //private void timer1_Tick(object sender, EventArgs e)
-        //{
-
-        //    if (loadingProgressBar1.Value > 0)
-        //    {
-        //        ForeColor = Color.FromArgb(loadingProgressBar1.Value, 100, loadingProgressBar1.Value);
-        //        loadingProgressBar1.Value++;
-        //    }
-        //    else
-        //    {
-        //        this.timer1.Enabled = false;
-        //    }
-        //}
+        
     }
 }

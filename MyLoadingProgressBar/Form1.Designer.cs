@@ -98,7 +98,7 @@ namespace MyLoadingProgressBar
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(509, 157);
+            this.ClientSize = new System.Drawing.Size(494, 160);
             this.Controls.Add(this.loadingProgressBar1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
