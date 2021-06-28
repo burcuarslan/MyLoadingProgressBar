@@ -15,14 +15,16 @@ namespace MyLoadingProgressBar
         int MinValue = 0;// ProgressBar için en küçük değer
         int MaxValue = 250;//ProgressBar için en büyük değer
         int ProgressBarValue = 0;// Mevcut ilerleme
+        int step = 1;
         Color ProgressColor = Color.White;// ProgressBar'ın ilerleme rengi
-        
+        int time = 1;
 
         public LoadingProgressBar()
         {
             InitializeComponent();
-           
-            timer1.Interval = 10;
+            
+            timer1.Interval = time*1000;
+            
 
         }
         private bool guncelle = false;
@@ -76,6 +78,7 @@ namespace MyLoadingProgressBar
             pe.Graphics.Dispose();
 
         }
+
         //minimum özelliği kontrol edilir
         public int Minimum
         {
@@ -197,7 +200,20 @@ namespace MyLoadingProgressBar
                 this.Invalidate(updateRect);
             }
         }
-       
+        public int Step
+        {
+            get
+            {
+                return step;
+            }
+            set
+            {
+                step = value;
+                
+                this.Invalidate();
+            }
+        }
+        
         public Color ProgressBarColor
         {
             get
@@ -219,18 +235,25 @@ namespace MyLoadingProgressBar
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        
+        public void Start()
+        {
+           
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
+            time = (Maximum - Minimum) / step;
+;           ForeColor = Color.FromArgb(Value, 100, Value);
 
-            ForeColor = Color.FromArgb(Value, 100, Value);
-             Value++;
-            if (Value==250)
+            Value+=Step;
+
+            if (Value >  Maximum)
             {
+                Value = Minimum;
                 timer1.Stop();
-                Value = 0;
+                
                 
             }
-            
         }
 
      

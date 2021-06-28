@@ -89,6 +89,7 @@ namespace MyLoadingProgressBar
             this.loadingProgressBar1.Name = "loadingProgressBar1";
             this.loadingProgressBar1.ProgressBarColor = System.Drawing.Color.White;
             this.loadingProgressBar1.Size = new System.Drawing.Size(387, 52);
+            this.loadingProgressBar1.Step = 5;
             this.loadingProgressBar1.TabIndex = 4;
             this.loadingProgressBar1.Text = "YÜKLENİYOR";
             this.loadingProgressBar1.Value = 0;
@@ -110,6 +111,7 @@ namespace MyLoadingProgressBar
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
